@@ -1,5 +1,14 @@
 # TEST-TASK
 
-// run 
-
+// run without docker
 git clone https://github.com/ALLMINER/TEST-TASK
+cd TEST-TASK
+gunicorn --bind 0.0.0.0:5000 wsgi:app 
+
+
+/// make docker image in host network
+
+cd TEST-TASK
+docker build -t test .
+
+docker run -d -p 5000:5000 --name test  --restart=always test
