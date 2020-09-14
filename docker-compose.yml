@@ -1,0 +1,10 @@
+version: '3'
+  services:
+    web:
+      build: .
+      container_name: test
+      command: bash -c "gunicorn --bind 0.0.0.0:5000 --workers 2 wsgi:app"
+      volumes:
+        - ./src:/src
+      expose:
+        - "5000"
